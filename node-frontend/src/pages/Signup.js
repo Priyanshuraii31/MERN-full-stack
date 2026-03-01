@@ -20,10 +20,8 @@ function Signup() {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-        "http://localhost:5001/api/register",
-        form
-      );
+      const res = await axios.post("https://mern-full-stack-prcf.onrender.com/api/register", form)
+      ;
 
       alert("User Registered Successfully ✅");
 
