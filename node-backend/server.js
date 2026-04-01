@@ -1,7 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import jwt from "jsonwebtoken";
 import connectDB from "./config/db.js";
+import authMiddleware from "./middleware/authMiddleware.js";
 
 dotenv.config();
 
@@ -28,9 +30,22 @@ app.post("/api/signup", (req, res) => {
 app.post("/api/login", (req, res) => {
   const { email, password } = req.body;
 
+  const token = jwt.sign(
+    { email },
+    process.env.JWT_SECRET,
+    { expiresIn: "1d" }
+  );
+
   res.json({
     message: "Login successful",
-    user: { email }
+    token
+  });
+});
+
+app.get("/api/profile", authMiddleware, (req, res) => {
+  res.json({
+    message: "Profile fetched successfully",
+    user: req.user
   });
 });
 
