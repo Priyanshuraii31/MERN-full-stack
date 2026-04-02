@@ -10,6 +10,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       const token = localStorage.getItem("token");
+      console.log("saved token:", token);
 
       if (!token) {
         navigate("/login");
@@ -26,8 +27,10 @@ const Dashboard = () => {
           }
         );
 
+        console.log("profile response:", res.data);
         setUser(res.data.user);
       } catch (error) {
+        console.log("profile error:", error.response?.data || error.message);
         localStorage.removeItem("token");
         navigate("/login");
       } finally {
