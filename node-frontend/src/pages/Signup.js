@@ -20,7 +20,7 @@ function Signup() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("https://mern-full-stack-prcf.onrender.com/api/signup", form)
+      await axios.post("https://mern-full-stack-prcf.onrender.com/api/signup", form)
       ;
 
       alert("User Registered Successfully ✅");
