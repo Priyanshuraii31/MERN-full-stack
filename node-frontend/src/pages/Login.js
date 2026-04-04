@@ -28,6 +28,8 @@ function Login() {
       );
 
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("userEmail", form.email);
+
       toast.success("Login successful");
       navigate("/dashboard");
     } catch (error) {
