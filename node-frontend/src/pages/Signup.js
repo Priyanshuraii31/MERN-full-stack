@@ -2,11 +2,13 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Auth.css";
 
 function Signup() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
@@ -59,13 +61,21 @@ function Signup() {
             required
           />
 
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={handleChange}
-            required
-          />
+          <div className="password-box">
+            <input
+              name="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              onChange={handleChange}
+              required
+            />
+            <span
+              className="toggle-password"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
 
           <button type="submit" disabled={loading}>
             {loading ? "Signing up..." : "Signup"}

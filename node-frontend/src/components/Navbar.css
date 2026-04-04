@@ -15,7 +15,7 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 14px;
 }
 
 .nav-links a {
@@ -28,8 +28,8 @@
   opacity: 0.85;
 }
 
-.logout-btn {
-  background: #ef4444;
+.logout-btn,
+.theme-btn {
   color: white;
   border: none;
   padding: 9px 14px;
@@ -38,6 +38,18 @@
   font-weight: 600;
 }
 
+.logout-btn {
+  background: #ef4444;
+}
+
 .logout-btn:hover {
   background: #dc2626;
+}
+
+.theme-btn {
+  background: #2563eb;
+}
+
+.theme-btn:hover {
+  background: #1d4ed8;
 }

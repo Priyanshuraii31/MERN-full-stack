@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { ThemeContext } from "../context/ThemeContext";
 import "./Navbar.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+  const { darkMode, toggleTheme } = useContext(ThemeContext);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userEmail");
     toast.info("Logged out successfully");
     navigate("/login");
   };
@@ -18,6 +21,10 @@ const Navbar = () => {
       <h2 className="logo">MERN Auth</h2>
 
       <div className="nav-links">
+        <button onClick={toggleTheme} className="theme-btn">
+          {darkMode ? "Light" : "Dark"}
+        </button>
+
         {!token ? (
           <>
             <Link to="/signup">Signup</Link>
@@ -26,6 +33,7 @@ const Navbar = () => {
         ) : (
           <>
             <Link to="/dashboard">Dashboard</Link>
+            <Link to="/profile">Profile</Link>
             <button onClick={handleLogout} className="logout-btn">
               Logout
             </button>
