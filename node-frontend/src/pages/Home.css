@@ -4,7 +4,7 @@
 }
 
 .hero {
-  padding: 80px 20px 50px;
+  padding: 80px 20px 40px;
   text-align: center;
 }
 
@@ -13,8 +13,24 @@
   margin: 0 auto;
 }
 
+.hero-badge {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+body.dark-mode .hero-badge {
+  background: #1e3a8a;
+  color: #dbeafe;
+}
+
 .hero h1 {
-  font-size: 42px;
+  font-size: 44px;
   margin-bottom: 18px;
   color: #111827;
 }
@@ -49,6 +65,7 @@ body.dark-mode .hero p {
   border-radius: 10px;
   font-weight: 600;
   transition: 0.2s ease;
+  display: inline-block;
 }
 
 .primary-btn {
@@ -81,7 +98,7 @@ body.dark-mode .secondary-btn:hover {
 }
 
 .features {
-  padding: 40px 20px 80px;
+  padding: 30px 20px 70px;
 }
 
 .features h2 {
@@ -127,5 +144,24 @@ body.dark-mode .feature-card {
 }
 
 body.dark-mode .feature-card p {
+  color: #d1d5db;
+}
+
+.cta-section {
+  text-align: center;
+  padding: 20px 20px 80px;
+}
+
+.cta-section h2 {
+  margin-bottom: 12px;
+  font-size: 30px;
+}
+
+.cta-section p {
+  margin-bottom: 22px;
+  color: #4b5563;
+}
+
+body.dark-mode .cta-section p {
   color: #d1d5db;
 }
