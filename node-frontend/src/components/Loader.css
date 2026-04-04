@@ -1,25 +1,47 @@
-.loader-wrapper {
-  min-height: calc(100vh - 72px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #111827;
-  gap: 12px;
-  background: #f9fafb;
+.footer {
+  background: #0f172a;
+  color: white;
+  padding: 40px 20px 24px;
+  margin-top: 40px;
 }
 
-.loader-icon {
-  font-size: 34px;
-  animation: spin 1s linear infinite;
-  color: #2563eb;
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.footer-content h3 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.footer-content p {
+  margin: 8px 0;
+  color: #cbd5e1;
+}
+
+.footer-icons {
+  margin: 18px 0;
+}
+
+.footer-icons a {
+  color: white;
+  font-size: 26px;
+  margin: 0 10px;
+  transition: 0.2s ease;
+}
+
+.footer-icons a:hover {
+  color: #60a5fa;
+}
+
+.footer-bottom {
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.heart-icon {
+  color: #ef4444;
+  vertical-align: middle;
 }
