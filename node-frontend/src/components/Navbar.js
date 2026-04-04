@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -8,6 +9,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    toast.info("Logged out successfully");
     navigate("/login");
   };
 

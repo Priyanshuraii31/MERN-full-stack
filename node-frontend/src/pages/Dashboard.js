@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Loader from "../components/Loader";
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -32,7 +33,7 @@ const Dashboard = () => {
   }, []);
 
   if (loading) {
-    return <h2 style={{ textAlign: "center", marginTop: "40px" }}>Loading...</h2>;
+    return <Loader text="Fetching your profile..." />;
   }
 
   return (

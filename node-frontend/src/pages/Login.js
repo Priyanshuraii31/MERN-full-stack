@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 import "./Auth.css";
 
 function Login() {
@@ -27,9 +28,10 @@ function Login() {
       );
 
       localStorage.setItem("token", res.data.token);
+      toast.success("Login successful");
       navigate("/dashboard");
     } catch (error) {
-      alert(error.response?.data?.message || "Login Failed");
+      toast.error(error.response?.data?.message || "Login Failed");
     } finally {
       setLoading(false);
     }
@@ -57,7 +59,7 @@ function Login() {
             required
           />
 
-          <button type="submit">
+          <button type="submit" disabled={loading}>
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>

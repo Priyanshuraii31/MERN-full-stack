@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 import "./Auth.css";
 
 function Signup() {
@@ -27,10 +28,10 @@ function Signup() {
         form
       );
 
-      alert("Signup successful");
+      toast.success("Signup successful");
       navigate("/login");
     } catch (error) {
-      alert(error.response?.data?.message || "Signup Failed");
+      toast.error(error.response?.data?.message || "Signup Failed");
     } finally {
       setLoading(false);
     }
@@ -66,7 +67,7 @@ function Signup() {
             required
           />
 
-          <button type="submit">
+          <button type="submit" disabled={loading}>
             {loading ? "Signing up..." : "Signup"}
           </button>
         </form>
