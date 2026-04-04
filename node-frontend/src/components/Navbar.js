@@ -18,7 +18,9 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <h2 className="logo">MERN Auth</h2>
+      <Link to="/" className="logo-link">
+        <h2 className="logo">MERN Auth</h2>
+      </Link>
 
       <div className="nav-links">
         <button onClick={toggleTheme} className="theme-btn">

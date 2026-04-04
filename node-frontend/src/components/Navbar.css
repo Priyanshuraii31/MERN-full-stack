@@ -53,3 +53,7 @@
 .theme-btn:hover {
   background: #1d4ed8;
 }
+.logo-link {
+  text-decoration: none;
+  color: white;
+}
