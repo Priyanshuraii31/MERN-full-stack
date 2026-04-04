@@ -1,15 +1,16 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import "./Signup.css";
+import "./Auth.css";
 
 function Signup() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
     email: "",
-    password: "",
+    password: ""
   });
 
   const handleChange = (e) => {
@@ -18,28 +19,32 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
-      await axios.post("https://mern-full-stack-prcf.onrender.com/api/signup", form)
-      ;
+      await axios.post(
+        "https://mern-full-stack-prcf.onrender.com/api/signup",
+        form
+      );
 
-      alert("User Registered Successfully ✅");
-
-      // Redirect to Login page
+      alert("Signup successful");
       navigate("/login");
-
     } catch (error) {
-      alert(error.response?.data?.message || "Error");
+      alert(error.response?.data?.message || "Signup Failed");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="signup-wrapper">
-      <div className="signup-card">
-        <h2>Signup</h2>
+    <div className="auth-wrapper">
+      <div className="auth-card">
+        <h2>Create Account</h2>
+
         <form onSubmit={handleSubmit}>
           <input
             name="name"
+            type="text"
             placeholder="Name"
             onChange={handleChange}
             required
@@ -61,8 +66,14 @@ function Signup() {
             required
           />
 
-          <button type="submit">Register</button>
+          <button type="submit">
+            {loading ? "Signing up..." : "Signup"}
+          </button>
         </form>
+
+        <p>
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
       </div>
     </div>
   );

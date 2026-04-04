@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import "./Login.css";
+import "./Auth.css";
 
 function Login() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState({
     email: "",
@@ -17,49 +18,56 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
-      const res = await axios.post("https://mern-full-stack-prcf.onrender.com/api/login", form)
-      ;
+      const res = await axios.post(
+        "https://mern-full-stack-prcf.onrender.com/api/login",
+        form
+      );
 
-      // Save token
       localStorage.setItem("token", res.data.token);
-
-      // Redirect to dashboard
       navigate("/dashboard");
-
     } catch (error) {
       alert(error.response?.data?.message || "Login Failed");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-  <div className="login-wrapper">
-    <div className="login-card">
-      <h2>Login</h2>
+    <div className="auth-wrapper">
+      <div className="auth-card">
+        <h2>Login</h2>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          onChange={handleChange}
-          required
-        />
+        <form onSubmit={handleSubmit}>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          onChange={handleChange}
-          required
-        />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            onChange={handleChange}
+            required
+          />
 
-        <button type="submit">Login</button>
-      </form>
+          <button type="submit">
+            {loading ? "Logging in..." : "Login"}
+          </button>
+        </form>
+
+        <p>
+          Don’t have an account? <Link to="/signup">Signup</Link>
+        </p>
+      </div>
     </div>
-  </div>
-);
+  );
 }
 
 export default Login;
