@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { getToken, getUserEmail, clearAuth, isTokenExpired } from "../utils/auth";
 import Loader from "../components/Loader";
 import "./Dashboard.css";
 
 const Profile = () => {
   const [user, setUser] = useState({
-    email: localStorage.getItem("userEmail") || "",
+    email: getUserEmail() || "",
   });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const token = localStorage.getItem("token");
+      const token = getToken();
+
+      if (!token || isTokenExpired(token)) {
+        clearAuth();
+        window.location.href = "/login";
+        return;
+      }
 
       try {
         const res = await axios.get(
@@ -25,7 +32,6 @@ const Profile = () => {
         );
 
         setUser(res.data.user);
-        localStorage.setItem("userEmail", res.data.user.email);
       } catch (error) {
         console.log(error.response?.data || error.message);
       } finally {
@@ -47,7 +53,7 @@ const Profile = () => {
         <p><strong>Email:</strong> {user?.email}</p>
         <p><strong>Status:</strong> Active user</p>
         <p><strong>Access:</strong> JWT Protected</p>
-        <p><strong>Theme:</strong> User controlled</p>
+        <p><strong>Session:</strong> Authenticated</p>
       </div>
     </div>
   );

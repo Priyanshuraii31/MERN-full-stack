@@ -88,3 +88,14 @@ body.dark-mode .toggle-password {
   text-decoration: none;
   font-weight: 600;
 }
+.remember-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: inherit;
+}
+
+.remember-box input {
+  width: auto;
+}

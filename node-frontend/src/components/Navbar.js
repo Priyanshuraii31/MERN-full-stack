@@ -2,16 +2,16 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ThemeContext } from "../context/ThemeContext";
+import { clearAuth, getToken } from "../utils/auth";
 import "./Navbar.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
+  const token = getToken();
   const { darkMode, toggleTheme } = useContext(ThemeContext);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userEmail");
+    clearAuth();
     toast.info("Logged out successfully");
     navigate("/login");
   };
