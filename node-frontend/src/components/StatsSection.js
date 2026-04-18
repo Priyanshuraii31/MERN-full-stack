@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FaShieldAlt, FaUserCheck, FaMoon } from "react-icons/fa";
 import "./StatsSection.css";
 
 const CountUp = ({ end, suffix = "" }) => {
@@ -7,17 +8,17 @@ const CountUp = ({ end, suffix = "" }) => {
   useEffect(() => {
     let start = 0;
     const duration = 1200;
-    const increment = end / (duration / 20);
+    const step = Math.ceil(end / 40);
 
     const timer = setInterval(() => {
-      start += increment;
+      start += step;
       if (start >= end) {
         setCount(end);
         clearInterval(timer);
       } else {
-        setCount(Math.floor(start));
+        setCount(start);
       }
-    }, 20);
+    }, 30);
 
     return () => clearInterval(timer);
   }, [end]);
@@ -35,18 +36,21 @@ const StatsSection = () => {
     <section className="stats-section">
       <div className="stats-grid">
         <div className="stat-card">
+          <FaShieldAlt className="stat-icon" />
           <CountUp end={100} suffix="%" />
           <p>Protected Routes</p>
         </div>
 
         <div className="stat-card">
+          <FaUserCheck className="stat-icon" />
           <CountUp end={24} suffix="/7" />
-          <p>Authentication Access</p>
+          <p>Secure Access</p>
         </div>
 
         <div className="stat-card">
+          <FaMoon className="stat-icon" />
           <CountUp end={3} suffix="+" />
-          <p>Core Security Features</p>
+          <p>Premium Features</p>
         </div>
       </div>
     </section>

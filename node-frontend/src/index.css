@@ -2,14 +2,15 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   transition: background 0.3s ease, color 0.3s ease;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
 }
 
 body.light-mode {
-  background: #f3f4f6;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
   color: #111827;
 }
 
 body.dark-mode {
-  background: #111827;
+  background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
   color: #f9fafb;
 }

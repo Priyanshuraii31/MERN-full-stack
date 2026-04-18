@@ -39,7 +39,6 @@ function Login() {
       );
 
       saveAuth(res.data.token, form.email, rememberMe);
-
       toast.success("Login successful");
       navigate("/dashboard");
     } catch (error) {
@@ -51,52 +50,70 @@ function Login() {
 
   return (
     <div className="auth-wrapper">
-      <div className="auth-card">
-        <h2>Login</h2>
+      <div className="auth-layout">
+        <div className="auth-left">
+          <h1>Welcome Back</h1>
+          <p>
+            Access your secure MERN account with protected authentication,
+            dark mode support, remember me, and premium user experience.
+          </p>
 
-        <form onSubmit={handleSubmit}>
-          <input
-            name="email"
-            type="email"
-            placeholder="Email"
-            onChange={handleChange}
-            required
-          />
-
-          <div className="password-box">
-            <input
-              name="password"
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              onChange={handleChange}
-              required
-            />
-            <span
-              className="toggle-password"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </span>
+          <div className="auth-highlights">
+            <div className="auth-highlight">JWT Protected Routes</div>
+            <div className="auth-highlight">Remember Me Session</div>
+            <div className="auth-highlight">Responsive Premium UI</div>
           </div>
+        </div>
 
-          <label className="remember-box">
-            <input
-              type="checkbox"
-              name="rememberMe"
-              checked={rememberMe}
-              onChange={handleChange}
-            />
-            <span>Remember me</span>
-          </label>
+        <div className="auth-right">
+          <div className="auth-card">
+            <h2>Login</h2>
 
-          <button type="submit" disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
-          </button>
-        </form>
+            <form onSubmit={handleSubmit}>
+              <input
+                name="email"
+                type="email"
+                placeholder="Email"
+                onChange={handleChange}
+                required
+              />
 
-        <p>
-          Don’t have an account? <Link to="/signup">Signup</Link>
-        </p>
+              <div className="password-box">
+                <input
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  onChange={handleChange}
+                  required
+                />
+                <span
+                  className="toggle-password"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
+
+              <label className="remember-box">
+                <input
+                  type="checkbox"
+                  name="rememberMe"
+                  checked={rememberMe}
+                  onChange={handleChange}
+                />
+                <span>Remember me</span>
+              </label>
+
+              <button type="submit" disabled={loading}>
+                {loading ? "Logging in..." : "Login"}
+              </button>
+            </form>
+
+            <p>
+              Don’t have an account? <Link to="/signup">Signup</Link>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

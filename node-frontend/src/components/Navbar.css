@@ -1,15 +1,27 @@
 .navbar {
+  width: 100%;
+  min-height: 72px;
+  background: #111827;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #111827;
+  padding: 0 24px;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-link {
+  text-decoration: none;
   color: white;
-  padding: 16px 32px;
 }
 
 .logo {
   margin: 0;
   font-size: 24px;
+  color: white;
 }
 
 .nav-links {
@@ -53,7 +65,45 @@
 .theme-btn:hover {
   background: #1d4ed8;
 }
-.logo-link {
-  text-decoration: none;
+
+.menu-icon {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
   color: white;
+}
+
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 72px;
+    right: 0;
+    width: 220px;
+    background: #111827;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 16px;
+    display: none;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a,
+  .theme-btn,
+  .logout-btn {
+    width: 100%;
+  }
+
+  .theme-btn,
+  .logout-btn {
+    text-align: left;
+  }
 }

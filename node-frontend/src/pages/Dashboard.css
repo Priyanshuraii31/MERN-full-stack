@@ -1,27 +1,241 @@
 .dashboard {
-  min-height: calc(100vh - 72px);
+  min-height: calc(100vh - 160px);
   background: #f9fafb;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
-.dashboard-card {
-  background: white;
-  padding: 32px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  width: 100%;
-  max-width: 520px;
+body.dark-mode .dashboard {
+  background: #111827;
 }
 
-.dashboard-card h1 {
-  margin-bottom: 20px;
+.dashboard-container {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.dashboard-hero {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.dashboard-hero h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
   color: #111827;
 }
 
-.dashboard-card p {
+.dashboard-hero p {
+  color: #4b5563;
+  font-size: 17px;
+}
+
+body.dark-mode .dashboard-hero h1 {
+  color: white;
+}
+
+body.dark-mode .dashboard-hero p {
+  color: #d1d5db;
+}
+
+.top-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-bottom: 28px;
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.widget-card,
+.dashboard-main-card,
+.activity-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+}
+
+body.dark-mode .widget-card,
+body.dark-mode .dashboard-main-card,
+body.dark-mode .activity-card {
+  background: rgba(31, 41, 55, 0.78);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.widget-card {
+  padding: 20px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  transition: transform 0.25s ease;
+}
+
+.widget-card:hover {
+  transform: translateY(-4px);
+}
+
+.widget-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #dbeafe;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+body.dark-mode .widget-icon {
+  background: rgba(37, 99, 235, 0.2);
+  color: #93c5fd;
+}
+
+.widget-card h4 {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+
+.widget-card p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+body.dark-mode .widget-card p {
+  color: #d1d5db;
+}
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 20px;
+}
+
+.dashboard-main-card,
+.activity-card {
+  padding: 28px;
+}
+
+.dashboard-main-card h2,
+.activity-card h2 {
+  margin-bottom: 18px;
+  color: #111827;
+}
+
+body.dark-mode .dashboard-main-card h2,
+body.dark-mode .activity-card h2 {
+  color: white;
+}
+
+.dashboard-main-card p {
   margin: 10px 0;
   font-size: 16px;
+}
+
+.dashboard-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.dashboard-btn {
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.primary-btn-dashboard {
+  background: #2563eb;
+  color: white;
+}
+
+.primary-btn-dashboard:hover {
+  background: #1d4ed8;
+}
+
+.secondary-btn-dashboard {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.secondary-btn-dashboard:hover {
+  background: #d1d5db;
+}
+
+body.dark-mode .secondary-btn-dashboard {
+  background: #374151;
+  color: white;
+}
+
+body.dark-mode .secondary-btn-dashboard:hover {
+  background: #4b5563;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.activity-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+body.dark-mode .activity-item {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.activity-dot {
+  width: 10px;
+  height: 10px;
+  margin-top: 8px;
+  border-radius: 50%;
+  background: #2563eb;
+  flex-shrink: 0;
+}
+
+.activity-item p {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+
+.activity-item small {
+  color: #6b7280;
+}
+
+body.dark-mode .activity-item small {
+  color: #9ca3af;
+}
+
+.activity-link {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-hero h1 {
+    font-size: 34px;
+  }
 }
