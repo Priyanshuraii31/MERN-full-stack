@@ -7,7 +7,7 @@ const CountUp = ({ end, suffix = "" }) => {
 
   useEffect(() => {
     let start = 0;
-    const duration = 1200;
+    
     const step = Math.ceil(end / 40);
 
     const timer = setInterval(() => {
